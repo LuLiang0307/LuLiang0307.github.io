@@ -5,17 +5,20 @@
   
   <title>CSS的一般布局的实现 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、左右布局* 1.table——tr+td 和 ul+li的两种形式二、左中右布局三、水平居中四、垂直居中五、等其他小技巧">
+  <meta name="description" content="一、左右布局1.table——tr+td 和 ul+li的两种形式 tr+td:tr代表行，td是列。先满足行，再满足列，还可以通过colspan来设置某一行的某一列。html:123456&amp;lt;table&amp;gt;    &amp;lt;tr style=&amp;quot;clearfix&amp;quot;&amp;gt;        &amp;lt;td&amp;gt;姓名&amp;lt;/td&amp;gt;        &amp;lt;td&amp;gt;Fr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS的一般布局的实现">
 <meta property="og:url" content="http://yoursite.com/2018/11/17/CSS的一般布局的实现/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、左右布局* 1.table——tr+td 和 ul+li的两种形式二、左中右布局三、水平居中四、垂直居中五、等其他小技巧">
+<meta property="og:description" content="一、左右布局1.table——tr+td 和 ul+li的两种形式 tr+td:tr代表行，td是列。先满足行，再满足列，还可以通过colspan来设置某一行的某一列。html:123456&amp;lt;table&amp;gt;    &amp;lt;tr style=&amp;quot;clearfix&amp;quot;&amp;gt;        &amp;lt;td&amp;gt;姓名&amp;lt;/td&amp;gt;        &amp;lt;td&amp;gt;Fr">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-18T09:28:54.398Z">
+<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf13a9db15c7.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf13a160e5a1.png">
+<meta property="og:updated_time" content="2018-11-19T12:11:40.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS的一般布局的实现">
-<meta name="twitter:description" content="一、左右布局* 1.table——tr+td 和 ul+li的两种形式二、左中右布局三、水平居中四、垂直居中五、等其他小技巧">
+<meta name="twitter:description" content="一、左右布局1.table——tr+td 和 ul+li的两种形式 tr+td:tr代表行，td是列。先满足行，再满足列，还可以通过colspan来设置某一行的某一列。html:123456&amp;lt;table&amp;gt;    &amp;lt;tr style=&amp;quot;clearfix&amp;quot;&amp;gt;        &amp;lt;td&amp;gt;姓名&amp;lt;/td&amp;gt;        &amp;lt;td&amp;gt;Fr">
+<meta name="twitter:image" content="https://i.loli.net/2018/11/18/5bf13a9db15c7.png">
 <meta name="twitter:creator" content="@coolwuxing">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -102,11 +105,24 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、左右布局"><a href="#一、左右布局" class="headerlink" title="一、左右布局"></a>一、左右布局</h2><h3 id="1-table——tr-td-和-ul-li的两种形式"><a href="#1-table——tr-td-和-ul-li的两种形式" class="headerlink" title="* 1.table——tr+td 和 ul+li的两种形式"></a>* 1.table——tr+td 和 ul+li的两种形式</h3><h2 id="二、左中右布局"><a href="#二、左中右布局" class="headerlink" title="二、左中右布局"></a>二、左中右布局</h2><h2 id="三、水平居中"><a href="#三、水平居中" class="headerlink" title="三、水平居中"></a>三、水平居中</h2><h2 id="四、垂直居中"><a href="#四、垂直居中" class="headerlink" title="四、垂直居中"></a>四、垂直居中</h2><h2 id="五、等其他小技巧"><a href="#五、等其他小技巧" class="headerlink" title="五、等其他小技巧"></a>五、等其他小技巧</h2>
+        <h2 id="一、左右布局"><a href="#一、左右布局" class="headerlink" title="一、左右布局"></a>一、左右布局</h2><h3 id="1-table——tr-td-和-ul-li的两种形式"><a href="#1-table——tr-td-和-ul-li的两种形式" class="headerlink" title="1.table——tr+td 和 ul+li的两种形式"></a>1.table——tr+td 和 ul+li的两种形式</h3><ul>
+<li><strong>tr+td:</strong><br>tr代表行，td是列。先满足行，再满足列，还可以通过colspan来设置某一行的某一列。<br>html:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;tr style=&quot;clearfix&quot;&gt;</span><br><span class="line">        &lt;td&gt;姓名&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;Frank&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">table&#123;</span><br><span class="line">    border: 1px solid red;</span><br><span class="line">&#125;</span><br><span class="line">table tr td&#123;</span><br><span class="line">    border: 1px solid black;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://i.loli.net/2018/11/18/5bf13a9db15c7.png" alt=""></p>
+<ul>
+<li><strong>ul+li</strong><br>设置ul的宽度不变，改变li的宽度就可以改变函数，ul的宽度和li的宽度之间的关系是倍数关系。<br>html:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;my&quot;&gt;</span><br><span class="line">	&lt;ul style=&quot;clearfix&quot;&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;那些花儿&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    display: block;</span><br><span class="line">    clear: all;</span><br><span class="line">&#125;</span><br><span class="line">.my ul &#123;</span><br><span class="line">	width: 210px;</span><br><span class="line">&#125;</span><br><span class="line">.my li &#123;</span><br><span class="line">	width: 100px;   /*如果显示三列 则width改为70px*/</span><br><span class="line">	float: left;</span><br><span class="line">	display: block;</span><br><span class="line">    border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://i.loli.net/2018/11/18/5bf13a160e5a1.png" alt=""></p>
+<h3 id="1-display-inline-block"><a href="#1-display-inline-block" class="headerlink" title="1.display: inline-block"></a>1.display: inline-block</h3><p>display:inline-block属性是介于行级元素(display:inline)和块级元素(display：block)之间的属性，它可以像行级元素一样水平布局，也可以像块级元素设置宽高属性，所以使用它可以进行左右布局。另：它不支持ie6、7浏览器，请注意，但是可以使用inline进行hack处理。</p>
+<h2 id="二、左中右布局"><a href="#二、左中右布局" class="headerlink" title="二、左中右布局"></a>二、左中右布局</h2><h2 id="三、水平居中"><a href="#三、水平居中" class="headerlink" title="三、水平居中"></a>三、水平居中</h2><h2 id="四、垂直居中"><a href="#四、垂直居中" class="headerlink" title="四、垂直居中"></a>四、垂直居中</h2><h2 id="五、等其他小技巧"><a href="#五、等其他小技巧" class="headerlink" title="五、等其他小技巧"></a>五、等其他小技巧</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjomogbd40001x4pmsrptly4n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjomojkcd0000cgpmtf5vc72k" class="article-share-link">Share</a>
       
       
     </footer>
