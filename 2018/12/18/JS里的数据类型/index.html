@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS里的数据类型 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS的七种数据类型数字（number） 字符串（string） 布尔（boolean） 符号（symbol） null undefined 对象（object） 1.number 1.整数和浮点数JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。 2.数值精度根据国际标准 IEEE 754，JavaScript 浮点数的64个二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS里的数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/JS里的数据类型/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JS的七种数据类型数字（number） 字符串（string） 布尔（boolean） 符号（symbol） null undefined 对象（object） 1.number 1.整数和浮点数JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。 2.数值精度根据国际标准 IEEE 754，JavaScript 浮点数的64个二">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-18T15:17:15.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS里的数据类型">
+<meta name="twitter:description" content="JS的七种数据类型数字（number） 字符串（string） 布尔（boolean） 符号（symbol） null undefined 对象（object） 1.number 1.整数和浮点数JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。 2.数值精度根据国际标准 IEEE 754，JavaScript 浮点数的64个二">
+<meta name="twitter:creator" content="@coolwuxing">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-43935113-3', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="header">
+  <div id="banner">
+    <div id="cover"></div>
+    <div id="stars"></div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="outer">
+        <section id="main"><article id="post-JS里的数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/JS里的数据类型/" class="article-date">
+  <time datetime="2018-12-18T14:40:39.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS里的数据类型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JS的七种数据类型"><a href="#JS的七种数据类型" class="headerlink" title="JS的七种数据类型"></a>JS的七种数据类型</h2><p>数字（number） 字符串（string） 布尔（boolean） 符号（symbol） null undefined 对象（object）</p>
+<h3 id="1-number"><a href="#1-number" class="headerlink" title="1.number"></a>1.number</h3><ol>
+<li>1.整数和浮点数<br>JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。</li>
+<li>2.数值精度<br>根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位，从最左边开始，是这样组成的。<blockquote>
+<p>第1位：符号位，0表示正数，1表示负数<br>第2位到第12位（共11位）：指数部分<br>第13位到第64位（共52位）：小数部分（即有效数字）</p>
+</blockquote>
+</li>
+<li>3.数值范围<br>JavaScript 能够表示的数值范围为21024到2-1023（开区间），超出这个范围的数无法表示。<br>如果一个数大于等于2的1024次方，那么就会发生“正向溢出”，即 JavaScript 无法表示这么大的数，这时就会返回Infinity。如果一个数小于等于2的-1075次方（指数部分最小值-1023，再加上小数部分的52位），那么就会发生为“负向溢出”，即 JavaScript 无法表示这么小的数，这时会直接返回0。</li>
+<li>4.数值的进制<blockquote>
+<p>十进制：没有前导0的数值。<br>八进制：有前缀0o或0O的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值。<br>十六进制：有前缀0x或0X的数值。<br>二进制：有前缀0b或0B的数值。</p>
+</blockquote>
+</li>
+<li>5.特殊值</li>
+</ol>
+<ul>
+<li>1）+0和-0<br>这两者基本上是一样的，唯一有区别的是+0或-0当作分母，返回的值是不相等的。<br><code>(1 / +0) === (1 / -0) // false</code><br>上面的代码之所以出现这样结果，是因为除以正零得到+Infinity，除以负零得到-Infinity，这两者是不相等的</li>
+<li>2)NaN<br>表示“非数字”（Not a Number），主要出现在将字符串解析成数字出错的场合。<blockquote>
+<p>NaN不等于任何值，包括它本身。</p>
+</blockquote>
+</li>
+<li>3)Infinity<br>Infinity表示“无穷”，用来表示两种场景。一种是一个正的数值太大，或一个负的数值太小，无法表示；另一种是非0数值除以0，得到Infinity。</li>
+<li>Infinity的四则运算，符合无穷的数学计算规则。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5 * Infinity // Infinity</span><br><span class="line">5 - Infinity // -Infinity</span><br><span class="line">Infinity / 5 // Infinity</span><br><span class="line">5 / Infinity // 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>0乘以Infinity，返回NaN；0除以Infinity，返回0；Infinity除以0，返回Infinity。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 * Infinity // NaN</span><br><span class="line">0 / Infinity // 0</span><br><span class="line">Infinity / 0 // Infinity</span><br></pre></td></tr></table></figure></p>
+<p>Infinity加上或乘以Infinity，返回的还是Infinity。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Infinity + Infinity // Infinity</span><br><span class="line">Infinity * Infinity // Infinity</span><br></pre></td></tr></table></figure></p>
+<p>Infinity减去或除以Infinity，得到NaN。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Infinity - Infinity // NaN</span><br><span class="line">Infinity / Infinity // NaN</span><br></pre></td></tr></table></figure></p>
+<p>Infinity与null计算时，null会转成0，等同于与0的计算。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">null * Infinity // NaN</span><br><span class="line">null / Infinity // 0</span><br><span class="line">Infinity / null // Infinity</span><br></pre></td></tr></table></figure></p>
+<p>Infinity与undefined计算，返回的都是NaN。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">undefined + Infinity // NaN</span><br><span class="line">undefined - Infinity // NaN</span><br><span class="line">undefined * Infinity // NaN</span><br><span class="line">undefined / Infinity // NaN</span><br><span class="line">Infinity / undefined // NaN</span><br></pre></td></tr></table></figure></p>
+<ol start="6">
+<li>6.parseInt()  parseFloat()   isNaN()  isFinite()<br>前三个都很好理解，主要介绍第四个<br>isFinite方法返回一个布尔值，表示某个值是否为正常的数值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isFinite(Infinity) // false</span><br><span class="line">isFinite(-Infinity) // false</span><br><span class="line">isFinite(NaN) // false</span><br><span class="line">isFinite(undefined) // false</span><br><span class="line">isFinite(null) // true</span><br><span class="line">isFinite(-1) // true</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>除了Infinity、-Infinity、NaN和undefined这几个值会返回false，isFinite对于其他的数值都会返回true。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><ol>
+<li>1.定义<br>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中。<br>如果要在单引号字符串的内部，使用单引号，就必须在内部的单引号前面加上反斜杠，用来转义。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;a \&apos;name\&apos; &apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果要写成多行字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;a\</span><br><span class="line">b\</span><br><span class="line">c&apos;</span><br></pre></td></tr></table></figure></p>
+<p>或者是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;a&apos;+</span><br><span class="line">&apos;b&apos;+</span><br><span class="line">&apos;c&apos;</span><br></pre></td></tr></table></figure></p>
+<p>推荐使用第二种</p>
+<ol start="2">
+<li><p>2.转义</p>
+<blockquote>
+<p>\0 ：null（\u0000）<br>\b ：后退键（\u0008）<br>\f ：换页符（\u000C）<br>\n ：换行符（\u000A）<br>\r ：回车键（\u000D）<br>\t ：制表符（\u0009）<br>\v ：垂直制表符（\u000B）<br>\’ ：单引号（\u0027）<br>\” ：双引号（\u0022）<br>\ ：反斜杠（\u005C）<br>特殊写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;\251&apos; // &quot;©&quot;</span><br><span class="line">&apos;\xA9&apos; // &quot;©&quot;</span><br><span class="line">&apos;\u00A9&apos; // &quot;©&quot;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>3.Base64 转码</p>
+<blockquote>
+<p>btoa()：任意值转为 Base64 编码<br>atob()：Base64 编码转为原来的值</p>
+</blockquote>
+</li>
+<li><p>4.<br>空字符串 “”或者是’’        length = 0<br>空格字符串 “ “或者是 ‘ ‘    length = 1</p>
+</li>
+</ol>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>表示空</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>表示未被定义</p>
+<ul>
+<li><p>null和undefined的区别<br>定义了一个变量，但是没有给变量赋值   ———undefined（语法）<br>定义了一个对象（object），但是没有给对象赋值  ———-null（惯例）<br>定义了一个非对象，但是没有赋值           ———-undefined（惯例）</p>
+</li>
+<li><p>两种重新定义key和value的方式的区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delete person[&apos;name&apos;]</span><br><span class="line">person.name           //undefined</span><br><span class="line">&apos;name&apos; in person      //false</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>无key 无value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">person.name = undefined</span><br><span class="line">person.name             //undefined</span><br><span class="line">&apos;name&apos; in person        //true</span><br></pre></td></tr></table></figure>
+<p>有key 无value</p>
+<ul>
+<li>死记两个bug<blockquote>
+<p>typeof null      //‘object’<br>typeof function  //‘function’<br>注意：没有’function’这个数据类型！！</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjptw6m9v00005wpmk4nwccxv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/17/CSS的一般布局的实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS的一般布局的实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/18/JS里的数据类型/">JS里的数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/17/CSS的一般布局的实现/">CSS的一般布局的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/09/css/">css</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/22/HTML常用标签注意的地方/">HTML常用标签注意的地方</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/关于html的知识介绍/">关于html的知识介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <div id="footer">
+  
+  <div id='foot-stars'></div>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 lianglu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</div>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
