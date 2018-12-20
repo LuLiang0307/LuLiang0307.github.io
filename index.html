@@ -78,6 +78,62 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS里的数据类型转换及一些面试题的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/" class="article-date">
+  <time datetime="2018-12-20T11:04:49.000Z" itemprop="datePublished">2018-12-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/">JS里的数据类型转换及一些面试题的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、七种数据类型"><a href="#一、七种数据类型" class="headerlink" title="一、七种数据类型"></a>一、七种数据类型</h2><p>number string boolean symbol null undefined object</p>
+<h2 id="二、任意类型转换成字符串的三种常用方法"><a href="#二、任意类型转换成字符串的三种常用方法" class="headerlink" title="二、任意类型转换成字符串的三种常用方法"></a>二、任意类型转换成字符串的三种常用方法</h2><p>1.toString<br>null和undefined没有这个API，出错的提示是 cannot read property ‘toString’ of null/undefined。不能读取null和undefined的属性。<br>object的toString方法得到  <code>&quot;[object Object]&quot;</code>。<br>2.string()<br>这种方法下，null和undefined就不会出现不能变成字符串的情况。<br>3.’’+任意类型<br>比如 1+’1’      //输出的结果是’11’，优先转变成字符串</p>
+<h2 id="三、任意类型转换成布尔类型的两种方法"><a href="#三、任意类型转换成布尔类型的两种方法" class="headerlink" title="三、任意类型转换成布尔类型的两种方法"></a>三、任意类型转换成布尔类型的两种方法</h2><p>1.Boolean()<br>2.!!任意类型的数据</p>
+<ul>
+<li>五个falsy值：0    NaN    ‘’    null    undefined  </li>
+<li>所有的object都是true。</li>
+</ul>
+<h2 id="四、内存"><a href="#四、内存" class="headerlink" title="四、内存"></a>四、内存</h2><p>1.内存是计算机中重要的部件之一，它是与CPU进行沟通的桥梁。计算机中所有程序的运行都是在内存中进行的，因此内存的性能对计算机的影响非常大。内存(Memory)也被称为内存储器，其作用是用于暂时存放CPU中的运算数据，以及与硬盘等外部存储器交换的数据。只要计算机在运行中，CPU就会把需要运算的数据调到内存中进行运算，当运算完成后CPU再将结果传送出来，内存的运行也决定了计算机的稳定运行。 内存是由内存芯片、电路板、金手指等部分组成的。</p>
+<ul>
+<li>特点是断电就丢失存储的数据。<br>2.数据区分为栈（Stack）和堆（Heap）。<br>3.ECMAScript规定：数字以64位存储，ES3中的字符以16位存储。<br>4.简单的数据类型直接存入stack中，复杂的数据类型（obj）存Heap地址存入stack中。<br>5.垃圾回收：如果一个对象没有被引用，那么它就是垃圾，将被会搜。</li>
+</ul>
+<h2 id="五、面试题"><a href="#五、面试题" class="headerlink" title="五、面试题"></a>五、面试题</h2><p>这些题目需要画内存图既能很容易的分析出来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">var a = 1</span><br><span class="line">var b = a</span><br><span class="line">b = 2</span><br><span class="line">请问 a 显示是几？</span><br></pre></td></tr></table></figure></p>
+<p>a=1;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">var a = &#123;name: &apos;a&apos;&#125;</span><br><span class="line">var b = a</span><br><span class="line">b = &#123;name: &apos;b&apos;&#125;</span><br><span class="line">请问现在 a.name 是多少？</span><br></pre></td></tr></table></figure>
+<p>a;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">var a = &#123;name: &apos;a&apos;&#125;</span><br><span class="line">var b = a</span><br><span class="line">b.name = &apos;b&apos;</span><br><span class="line">请问现在 a.name 是多少？</span><br></pre></td></tr></table></figure>
+<p>b; //浅拷贝的很好的例子，改变b的值同时影响到了a的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">var a = &#123;name: &apos;a&apos;&#125;</span><br><span class="line">var b = a</span><br><span class="line">b = null</span><br><span class="line">请问现在 a 是什么？</span><br></pre></td></tr></table></figure>
+<p><code>a=｛name : &#39;a&#39;｝</code>;</p>
+<p><img src="https://i.loli.net/2018/12/20/5c1b813a131fd.png" alt="1545306360(1).png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjpwjldrc00014spmbmvwyz4m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS里的数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/18/JS里的数据类型/" class="article-date">
@@ -195,7 +251,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjptw7419000350pmnnkdl6y1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjpwjldrg00034spmxpo62289" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +358,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjptw740w000050pm1nhl9hzf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjpwjldr500004spmgpmq59eg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +417,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjptw7416000250pmb492r8ni" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjpwjldri00044spmo46e7yuj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +462,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjptw7413000150pmmn7xjutg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjpwjldrf00024spmhzdy9gtx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,7 +573,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjptw741g000650pmkzy1i6t4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjpwjldrs00084spmccp8xblm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +645,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjptw741n000950pm67264n00" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjpwjldry000a4spmsr2k8o8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -631,7 +687,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjptw741i000750pm8trpwla5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjpwjldrv00094spmggctr5ti" class="article-share-link">Share</a>
       
       
     </footer>
@@ -670,7 +726,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjptw741b000450pm34baujth" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjpwjldrn00064spm1ikpyqd7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -707,7 +763,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/第二篇博客/" data-id="cjptw741l000850pmbm4gzvh9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/第二篇博客/" data-id="cjpwjldrr00074spmwr52f0ng" class="article-share-link">Share</a>
       
       
     </footer>
@@ -717,51 +773,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/08/hello-world/" class="article-date">
-  <time datetime="2018-10-08T13:10:55.268Z" itemprop="datePublished">2018-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/hello-world/" data-id="cjptw741d000550pm4jaay3p6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -777,7 +792,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -787,6 +802,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/">JS里的数据类型转换及一些面试题的坑</a>
+          </li>
         
           <li>
             <a href="/2018/12/18/JS里的数据类型/">JS里的数据类型</a>
@@ -802,10 +821,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/10/22/HTML常用标签注意的地方/">HTML常用标签注意的地方</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/18/关于html的知识介绍/">关于html的知识介绍</a>
           </li>
         
       </ul>
