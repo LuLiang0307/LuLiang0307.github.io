@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一、全局对象window 浏览器中默认的全局对象是window。全局变量是globol。 浏览器中的重要属性分类分成两类。一类是私有属性，几种或者某种浏览器特有的属性。比如：atob():把base64转成原来的形式alert():弹框提示prompt()：用户填写confirm()：用户确认console()：开发者打印document()：文档，DOMhistory():：BOM另外一类是公有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-22T14:50:59.356Z">
+<meta property="og:updated_time" content="2018-12-22T14:54:58.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型与原型链">
 <meta name="twitter:description" content="一、全局对象window 浏览器中默认的全局对象是window。全局变量是globol。 浏览器中的重要属性分类分成两类。一类是私有属性，几种或者某种浏览器特有的属性。比如：atob():把base64转成原来的形式alert():弹框提示prompt()：用户填写confirm()：用户确认console()：开发者打印document()：文档，DOMhistory():：BOM另外一类是公有">
@@ -143,12 +143,12 @@ ga('send', 'pageview');
 <h2 id="三、最重要的一个公式"><a href="#三、最重要的一个公式" class="headerlink" title="三、最重要的一个公式"></a>三、最重要的一个公式</h2><p><code>var 对象 = new 函数()</code></p>
 <font color="red"><code>对象.__proto__ === 函数.prototype</code></font>
 
-<p>变形得到的式子有：<br>函数.prototype.<strong>proto</strong> === Object.prototype<br>函数.<strong>proto</strong> === Function.prototype<br>Function.<strong>proto</strong> === Function.prototype<br>Function.prototype.<strong>proto</strong> === Object.prototype</p>
+<p>变形得到的式子有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数.prototype.__proto__ === Object.prototype</span><br><span class="line">函数.__proto__ === Function.prototype</span><br><span class="line">Function.__proto__ === Function.prototype</span><br><span class="line">Function.prototype.__proto__ === Object.prototype</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjpzl2a80000alopm2n6i37pc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjpzl2s9t0008jwpmulx3nblz" class="article-share-link">Share</a>
       
       
     </footer>
