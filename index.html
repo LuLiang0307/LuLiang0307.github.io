@@ -78,6 +78,84 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-原型与原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/22/原型与原型链/" class="article-date">
+  <time datetime="2018-12-22T13:54:49.000Z" itemprop="datePublished">2018-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/22/原型与原型链/">原型与原型链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、全局对象window"><a href="#一、全局对象window" class="headerlink" title="一、全局对象window"></a>一、全局对象window</h2><ol>
+<li>浏览器中默认的全局对象是window。<br>全局变量是globol。</li>
+<li>浏览器中的重要属性分类<br>分成两类。<br>一类是私有属性，几种或者某种浏览器特有的属性。比如：<br><code>atob()</code>:把base64转成原来的形式<br><code>alert()</code>:弹框提示<br><code>prompt()</code>：用户填写<br><code>confirm()</code>：用户确认<br><code>console()</code>：开发者打印<br><code>document()</code>：文档，DOM<br><code>history():</code>：BOM<br>另外一类是公有属性，由ECMAScript规定的属性。比如：<br><code>parseInt</code><br><code>parseFloat</code><br><code>Number()</code><br><code>String()</code><br><code>Boolean()</code><br><code>Object()</code></li>
+</ol>
+<h2 id="二、全局函数"><a href="#二、全局函数" class="headerlink" title="二、全局函数"></a>二、全局函数</h2><h3 id="1-Number"><a href="#1-Number" class="headerlink" title="1.Number()"></a>1.Number()</h3><ol>
+<li><p>两种声明方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var n = 1; //声明并且赋值了数字1，这种方式是JS所喜爱的声明方式</span><br><span class="line">var n = new number(1);  //声明了一个Number对象，由于历史因素，JS的语法要求像Java，于是成了这种写法。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个坑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var n = 1</span><br><span class="line">n.xxx = 2   //赋值成功，临时创建一个temp，执行完后被抹掉，于是存在堆里面的数据也成了垃圾，在下一条语句执行前被回收掉了</span><br><span class="line">n.xxx = ?   //undefined，因为这时候的n对应的地址里面没有xxx这个属性</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String()"></a>2.String()</h3><ol>
+<li><p>两种声明方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;asdfghjkl&apos;</span><br><span class="line">var s = new string(&apos;asdfghjkl&apos;) //声明了一个string对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一些常用的API</p>
+</li>
+</ol>
+<ul>
+<li>1.<code>s.charAt(0)</code>等同于<code>s[0]</code>:取出字符串里面的第几位进行操作。</li>
+<li>2.<code>s.charCodeAt(0)</code>：获取字符的Unicode编码。</li>
+<li>3.<code>(100).toString(16)</code>:得到64。以16进制表示。</li>
+<li>4.<code>&#39;a&#39;.charCodeAt(0)</code>:得到97。以十进制表示。</li>
+<li>5.<code>&#39;a&#39;.charCodeAt(0).toString(16)</code>:得到61。16进制表示。</li>
+<li>6.<code>string.trim()</code>:去掉字符串两头的空格。</li>
+<li>7.<code>s1.concat(s2)</code>:连接两个字符串。</li>
+<li>8.<code>s1.slice(startchar,endchar+1)</code>:截段获取。</li>
+<li>9.<code>s1.replace(oldchar,newchar)</code>:替换。但s1的值还是不变。</li>
+</ul>
+<h3 id="3-Boolean"><a href="#3-Boolean" class="headerlink" title="3.Boolean()"></a>3.Boolean()</h3><ol>
+<li>一个坑<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var f1 = false</span><br><span class="line">var f2 = new boolean(false)  //创建一个false对象</span><br><span class="line">if(f1)&#123;console.log(1)&#125;</span><br><span class="line">if(f2)&#123;console.log(2)&#125;</span><br><span class="line">//输出为2，因为f2是个false对象，对象的boolean值是true</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-Object"><a href="#4-Object" class="headerlink" title="4.Object()"></a>4.Object()</h3><ol>
+<li>两种声明方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o1 = &#123;&#125;</span><br><span class="line">var o2 = new Object()</span><br><span class="line">//都是创建对象，但是地址不一样，这两种方式还是不相等</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="三、最重要的一个公式"><a href="#三、最重要的一个公式" class="headerlink" title="三、最重要的一个公式"></a>三、最重要的一个公式</h2><p><code>var 对象 = new 函数()</code></p>
+<font color="red"><code>对象.__proto__ === 函数.prototype</code></font>
+
+<p>变形得到的式子有：<br>函数.prototype.<strong>proto</strong> === Object.prototype<br>函数.<strong>proto</strong> === Function.prototype<br>Function.<strong>proto</strong> === Function.prototype<br>Function.prototype.<strong>proto</strong> === Object.prototype</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjpzl2a80000alopm2n6i37pc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS里的数据类型转换及一些面试题的坑" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/" class="article-date">
@@ -124,7 +202,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjpwjldrc00014spmbmvwyz4m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjpzl2a7o0006lopmvqx6ajot" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +329,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjpwjldrg00034spmxpo62289" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjpzl2a7g0002lopm8uzyjba0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +436,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjpwjldr500004spmgpmq59eg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjpzl2a7d0001lopmtdlwmfzg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,7 +495,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjpwjldri00044spmo46e7yuj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjpzl2a7i0003lopm2vud6gbm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +540,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjpwjldrf00024spmhzdy9gtx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjpzl2a760000lopmva56a7bl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -573,7 +651,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjpwjldrs00084spmccp8xblm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjpzl2a7p0007lopmuloxwe5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -645,7 +723,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjpwjldry000a4spmsr2k8o8p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjpzl2a8e000blopmbz73239d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -687,7 +765,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjpwjldrv00094spmggctr5ti" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjpzl2a7x0009lopm8bafo6pp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -726,44 +804,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjpwjldrn00064spm1ikpyqd7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第二篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/08/第二篇博客/" class="article-date">
-  <time datetime="2018-10-08T13:32:28.000Z" itemprop="datePublished">2018-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/第二篇博客/">第二篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h1>不是很习惯的第一天</h1><p></p>
-<p>第一次使用hexo，光是安装和配置的时间都是很漫长和折磨人的，甚至在想自己的理解能力是不是不适合程序员这个工作，但是最终还是成功了，很开心，只是不是很理解为什么hexo只有在hexo server的命令不停止的情况下才能运行，一旦停止就不能运行了</p>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/第二篇博客/" data-id="cjpwjldrr00074spmwr52f0ng" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjpzl2a7k0004lopmobdz6rao" class="article-share-link">Share</a>
       
       
     </footer>
@@ -792,7 +833,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -802,6 +843,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/22/原型与原型链/">原型与原型链</a>
+          </li>
         
           <li>
             <a href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/">JS里的数据类型转换及一些面试题的坑</a>
@@ -817,10 +862,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/11/09/css/">css</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/22/HTML常用标签注意的地方/">HTML常用标签注意的地方</a>
           </li>
         
       </ul>
