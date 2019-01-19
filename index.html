@@ -100,140 +100,25 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h2><ul>
-<li><p>1.文档对象模型（Document Object Model，简称DOM）<br>是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。Document Object Model的历史可以追溯至1990年代后期微软与Netscape的“浏览器大战”，双方为了在JavaScript与JScript一决生死，于是大规模的赋予浏览器强大的功能。微软在网页技术上加入了不少专属事物，既有VBScript、ActiveX、以及微软自家的DHTML格式等，使不少网页使用非微软平台及浏览器无法正常显示。DOM即是当时蕴酿出来的杰作。</p>
-</li>
-<li><p>2.节点<br>根据 DOM，HTML 文档中的每个成分都是一个节点。<br>DOM 是这样规定的：</p>
-</li>
-<li>整个文档是一个文档节点</li>
-<li>每个 HTML 标签是一个元素节点</li>
-<li>包含在 HTML 元素中的文本是文本节点</li>
-<li>每一个 HTML 属性是一个属性节点</li>
-<li><p>注释属于注释节点</p>
-</li>
-<li><p>3.Node层次<br>节点彼此都有等级关系。<br>HTML 文档中的所有节点组成了一个文档树（或节点树）。HTML 文档中的每个元素、属性、文本等都代表着树中的一个节点。树起始于文档节点，并由此继续伸出枝条，直到处于这棵树最低级别的所有文本节点为止。<br><img src="https://i.loli.net/2019/01/19/5c42b1359999b.jpg" alt="节点树示意图"></p>
-</li>
-<li><p>4.优点和缺点<br>DOM的优势主要表现在：易用性强，使用DOM时，将把所有的XML文档信息都存于内存中，并且遍历简单，支持XPath，增强了易用性。</p>
-</li>
-</ul>
+        <h2 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h2><h3 id="1-文档对象模型（Document-Object-Model，简称DOM）"><a href="#1-文档对象模型（Document-Object-Model，简称DOM）" class="headerlink" title="1.文档对象模型（Document Object Model，简称DOM）"></a>1.文档对象模型（Document Object Model，简称DOM）</h3><p>是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。Document Object Model的历史可以追溯至1990年代后期微软与Netscape的“浏览器大战”，双方为了在JavaScript与JScript一决生死，于是大规模的赋予浏览器强大的功能。微软在网页技术上加入了不少专属事物，既有VBScript、ActiveX、以及微软自家的DHTML格式等，使不少网页使用非微软平台及浏览器无法正常显示。DOM即是当时蕴酿出来的杰作。</p>
+<h3 id="2-节点"><a href="#2-节点" class="headerlink" title="2.节点"></a>2.节点</h3><p>根据 DOM，HTML 文档中的每个成分都是一个节点。<br>DOM 是这样规定的：<br>整个文档是一个文档节点<br>每个 HTML 标签是一个元素节点<br>包含在 HTML 元素中的文本是文本节点<br>每一个 HTML 属性是一个属性节点<br>注释属于注释节点</p>
+<h3 id="3-Node层次"><a href="#3-Node层次" class="headerlink" title="3.Node层次"></a>3.Node层次</h3><p>节点彼此都有等级关系。<br>HTML 文档中的所有节点组成了一个文档树（或节点树）。HTML 文档中的每个元素、属性、文本等都代表着树中的一个节点。树起始于文档节点，并由此继续伸出枝条，直到处于这棵树最低级别的所有文本节点为止。<br><img src="https://i.loli.net/2019/01/19/5c42b1359999b.jpg" alt="节点树示意图"></p>
+<h3 id="4-优点和缺点"><a href="#4-优点和缺点" class="headerlink" title="4.优点和缺点"></a>4.优点和缺点</h3><p>DOM的优势主要表现在：易用性强，使用DOM时，将把所有的XML文档信息都存于内存中，并且遍历简单，支持XPath，增强了易用性。</p>
 <p>DOM的缺点主要表现在：效率低，解析速度慢，内存占用量过高，对于大文件来说几乎不可能使用。另外效率低还表现在大量的消耗时间，因为使用DOM进行解析时，将为文档的每个element、attribute、processing-instruction和comment都创建一个对象，这样在DOM机制中所运用的大量对象的创建和销毁无疑会影响其效率。</p>
-<h2 id="节点查找"><a href="#节点查找" class="headerlink" title="节点查找"></a>节点查找</h2><ul>
-<li><ol>
-<li>document.getElementById ：<br>（1）参数</li>
-</ol>
-</li>
-<li>根据ID查找元素，大小写敏感，如果有多个结果，只返回第一个；</li>
-<li>element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.<br>（1）返回值</li>
-<li>返回一个匹配到 ID 的 DOM Element 对象。若在当前 Document 下没有找到，则返回 null。</li>
-</ul>
-<p>由于元素的 ID 在大部分情况下要求是独一无二的，这个方法自然而然地成为了一个高效查找特定元素的方法。不同于其他 Element 查找方法（如Document.querySelector() 以及 Document.querySelectorAll()），getElementById() 只有在作为 document 的方法时才能起作用，而在DOM中的其他元素下无法生效。这是因为 ID 值在整个网页中必须保持唯一。因此没有必要为这个方法创建所谓的 “局部” 版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var element = document.getElementById(id);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><ol start="2">
-<li>document.getElementsByClassName ：<br>根据类名查找元素，多个类名用空格分隔，返回一个 HTMLCollection 。注意兼容性为IE9+（含）。另外，不仅仅是document，其它元素也支持 getElementsByClassName 方法；<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var elements = document.getElementsByClassName(names); // or:</span><br><span class="line">var elements = rootElement.getElementsByClassName(names);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>elements 是一个实时集合，包含了找到的所有元素。</p>
-</li>
-<li>names 是一个字符串，表示要匹配的类名列表；类名通过空格分隔</li>
-<li><p>getElementsByClassName 可以在任何元素上调用，不仅仅是 document。 调用这个方法的元素将作为本次查找的根元素.</p>
-</li>
-<li><ol start="3">
-<li>document.getElementsByTagName ：<br>根据标签查找元素， * 表示查询所有标签，返回一个 HTMLCollection 。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var elements = document.getElementsByTagName(name);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>elements 是一个由发现的元素出现在树中的顺序构成的动态的HTML集合 HTMLCollection 。</p>
-</li>
-<li><p>name 是一个代表元素的名称的字符串。特殊字符 “*” 代表了所有元素。<br><strong>注意：</strong>当在一个HTML 文件上执行时， getElementsByTagName() 会在执行前把参数转换为小写字母。这是试着在一个HTML文件的子树匹配驼峰命名法的 SVG 元素时不希望的。 document.getElementsByTagNameNS() 在那种情况下会有用. </p>
-</li>
-<li><ol start="4">
-<li>document.getElementsByName ：<br>根据元素的name属性查找，返回一个 NodeList 。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elements = document.getElementsByName(name);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>elements 是一个实时更新的 NodeList 集合。</li>
-<li>name 是元素的 name 属性的值。<br><strong>注意：</strong></li>
-<li>getElementsByName  在不同的浏览器其中工作方式不同。在IE和Opera中， getElementsByName()  方法还会返回那些 id 为指定值的元素。所以你要小心使用该方法，最好不要为元素的 name 和 id 赋予相同的值。 </li>
-<li><p>IE 和 Edge 都返回一个 HTMLCollection, 而不是NodeList 。</p>
-</li>
-<li><ol start="5">
-<li>document.querySelector ：<br>返回单个Node，IE8+(含），如果匹配到多个结果，只返回第一个。如果找不到匹配项，则返回null。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element = document.querySelector(selectors);</span><br></pre></td></tr></table></figure>
-<p>（1）参数</p>
-<ul>
-<li>selectors包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。<br><strong>提示:</strong>必须使用反斜杠字符转义不属于标准CSS语法的字符。 由于JavaScript也使用退格转义，因此在使用这些字符编写字符串文字时必须特别小心。<br>（2）返回值</li>
-<li>表示文档中与指定的一组CSS选择器匹配的第一个元素的 html元素Element对象。<br>（3）异常</li>
-<li><p>SYNTAX_ERR指定selectors的语法无效。</p>
-</li>
-<li><ol start="6">
-<li>document.querySelectorAll ：<br>返回一个 NodeList ，IE8+(含）。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elementList = parentNode.querySelectorAll(selectors);</span><br></pre></td></tr></table></figure>
-<p>（1）参数</p>
-<ul>
-<li>一个 DOMString 包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误。<br>（2）返回值</li>
-<li>一个静态 NodeList，包含一个与至少一个指定选择器匹配的元素的Element对象，或者在没有匹配的情况下为空NodeList。<br>（3）异常</li>
-<li>SyntaxError如果指定的 选择器 不合法，会抛出错误。如$(“##div”)</li>
-</ul>
-<ul>
-<li><ol start="7">
-<li>document.forms ：<br>获取当前页面所有form，返回一个 HTMLCollection ；</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let collection = document.forms;</span><br></pre></td></tr></table></figure>
 <h2 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h2><p>Node是一个接口，许多DOM类型从这个接口继承，并允许类似地处理（或测试）这些各种类型。<br>以下接口都从Node继承其方法和属性：<br>Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference。<br>在方法和属性不相关的特定情况下，这些接口可能返回null。它们可能会抛出异常 - 例如，当将子节点添加到不允许子节点存在的节点时。</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>从其父类EventTarget继承属性。</p>
-<ul>
-<li><ol>
+<ol>
 <li>Node.childNodes（只读）<br>返回一个包含了该节点所有子节点的实时的NodeList。NodeList 是“实时的”意思是，如果该节点的子节点发生了变化，NodeList对象就会自动更新。</li>
-</ol>
-</li>
-<li><ol start="2">
 <li>Node.firstChild （只读）<br>返回该节点的第一个子节点Node，如果该节点没有子节点则返回null。</li>
-</ol>
-</li>
-<li><ol start="3">
 <li>Node.isConnected（只读）<br>返回一个布尔值用来检测该节点是否已连接(直接或者间接)到一个上下文对象上，比如通常DOM情况下的Document对象，或者在shadow DOM情况下的ShadowRoot对象。</li>
-</ol>
-</li>
-<li><ol start="4">
 <li>Node.lastChild （只读）<br>返回该节点的最后一个子节点Node，如果该节点没有子节点则返回null。</li>
-</ol>
-</li>
-<li><ol start="5">
 <li>Node.nextSibling （只读）<br>返回与该节点同级的下一个节点 Node，如果没有返回null。</li>
-</ol>
-</li>
-<li><ol start="6">
 <li>Node.nodeName （只读）<br>返回一个包含该节点名字的DOMString。节点的名字的结构和节点类型不同。比如HTMLElement的名字跟它所关联的标签对应，就比如HTMLAudioElement的就是 ‘audio’ ，Text节点对应的是 ‘#text’ 还有Document节点对应的是 ‘#document’。</li>
-</ol>
-</li>
-<li><ol start="7">
 <li>Node.nodeType（只读）<br>返回一个与该节点类型对应的无符号短整型的值，后面作为重点详细介绍。</li>
-</ol>
-</li>
-<li><ol start="8">
 <li>Node.parentNode （只读）<br>返回一个当前结点 Node的父节点 。如果没有这样的结点,，比如说像这个节点是树结构的顶端或者没有插入一棵树中， 这个属性返回null。</li>
-</ol>
-</li>
-<li><ol start="9">
 <li>Node.parentElement （只读）<br>返回一个当前节点的父节点 Element 。 如果当前节点没有父节点或者说父节点不是一个元素(Element), 这个属性返回null。</li>
-</ol>
-</li>
-<li><ol start="10">
 <li>Node.previousSibling （只读）<br>返回一个当前节点同辈的前一个结点( Node) ，或者返回null（如果不存在这样的一个节点的话）。</li>
 </ol>
-</li>
-</ul>
 <h3 id="nodeType"><a href="#nodeType" class="headerlink" title="nodeType"></a>nodeType</h3><p>nodeType 属性可用来区分不同类型的节点，比如 元素, 文本 和 注释。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var type = node.nodeType;</span><br></pre></td></tr></table></figure></p>
 <p>返回一个整数，其代表的是节点类型。</p>
 <table>
@@ -301,22 +186,85 @@ ga('send', 'pageview');
 <li>text 是一个文本节点.</li>
 <li>data 是一个字符串,包含了放在文本节点中的内容.</li>
 </ul>
-<p>###　cloneNode<br>Node.cloneNode() 方法返回调用该方法的节点的一个副本.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dupNode = node.cloneNode(deep);</span><br></pre></td></tr></table></figure></p>
+<h3 id="cloneNode"><a href="#cloneNode" class="headerlink" title="cloneNode"></a>cloneNode</h3><p>Node.cloneNode() 方法返回调用该方法的节点的一个副本.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dupNode = node.cloneNode(deep);</span><br></pre></td></tr></table></figure></p>
 <p><strong>node</strong><br>将要被克隆的节点<br><strong>dupNode</strong><br>克隆生成的副本节点<br><strong>deep</strong> (可选)<br>是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.</p>
 <h3 id="createDocumentFragment"><a href="#createDocumentFragment" class="headerlink" title="createDocumentFragment"></a>createDocumentFragment</h3><p>创建一个新的空白的文档片段( DocumentFragment)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let fragment = document.createDocumentFragment();</span><br></pre></td></tr></table></figure></p>
 <p>fragment 是一个指向空DocumentFragment对象的引用。</p>
 <h2 id="页面修改型API"><a href="#页面修改型API" class="headerlink" title="页面修改型API"></a>页面修改型API</h2><p>修改页面内容的api主要包括：appendChild，insertBefore，removeChild，replaceChild。</p>
 <h3 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild"></a>appendChild</h3><p>Node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var child = node.appendChild(child);</span><br></pre></td></tr></table></figure></p>
+<p>node 是要插入子节点的父节点.<br>child 即是参数又是这个方法的返回值.</p>
+<h3 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore"></a>insertBefore</h3><p>insertBefore用来添加一个节点到一个参照节点之前.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parentNode.insertBefore(newNode,refNode);</span><br></pre></td></tr></table></figure></p>
+<p>parentNode表示新节点被添加后的父节点<br>newNode表示要添加的节点<br>refNode表示参照节点，新节点会添加到这个节点之前</p>
+<h3 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild"></a>removeChild</h3><p>Node.removeChild() 方法从DOM中删除一个子节点。返回删除的节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let oldChild = node.removeChild(child);</span><br><span class="line">//OR</span><br><span class="line">element.removeChild(child);</span><br></pre></td></tr></table></figure></p>
+<p>child 是要移除的那个子节点.<br>node 是child的父节点.<br>oldChild保存对删除的子节点的引用. oldChild === child.<br>被移除的这个子节点仍然存在于内存中,只是没有添加到当前文档的DOM树中,因此,你还可以把这个节点重新添加回文档中,当然,实现要用另外一个变量比如上例中的oldChild来保存这个节点的引用. 如果使用上述语法中的第二种方法, 即没有使用 oldChild 来保存对这个节点的引用, 则认为被移除的节点已经是无用的, 在短时间内将会被内存管理回收.</p>
+<h3 id="replaceChild"><a href="#replaceChild" class="headerlink" title="replaceChild"></a>replaceChild</h3><p>用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replacedNode = parentNode.replaceChild(newChild, oldChild);</span><br></pre></td></tr></table></figure></p>
+<p>newChild 用来替换 oldChild 的新节点。如果该节点已经存在于DOM树中，则它会被从原始位置删除。<br>oldChild  被替换掉的原始节点。<br>replacedNode 和oldChild相等。</p>
+<h2 id="节点查找API"><a href="#节点查找API" class="headerlink" title="节点查找API"></a>节点查找API</h2><h3 id="1-document-getElementById-："><a href="#1-document-getElementById-：" class="headerlink" title="1. document.getElementById ："></a>1. document.getElementById ：</h3><p>（1）参数</p>
 <ul>
-<li>node 是要插入子节点的父节点.</li>
-<li>child 即是参数又是这个方法的返回值.</li>
+<li>根据ID查找元素，大小写敏感，如果有多个结果，只返回第一个；</li>
+<li>element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.<br>（1）返回值</li>
+<li>返回一个匹配到 ID 的 DOM Element 对象。若在当前 Document 下没有找到，则返回 null。</li>
 </ul>
-<h3 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore"></a>insertBefore</h3><p>###　removeChild</p>
-<h3 id="replaceChild"><a href="#replaceChild" class="headerlink" title="replaceChild"></a>replaceChild</h3>
+<p>由于元素的 ID 在大部分情况下要求是独一无二的，这个方法自然而然地成为了一个高效查找特定元素的方法。不同于其他 Element 查找方法（如Document.querySelector() 以及 Document.querySelectorAll()），getElementById() 只有在作为 document 的方法时才能起作用，而在DOM中的其他元素下无法生效。这是因为 ID 值在整个网页中必须保持唯一。因此没有必要为这个方法创建所谓的 “局部” 版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var element = document.getElementById(id);</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-document-getElementsByClassName-："><a href="#2-document-getElementsByClassName-：" class="headerlink" title="2. document.getElementsByClassName ："></a>2. document.getElementsByClassName ：</h3><p>根据类名查找元素，多个类名用空格分隔，返回一个 HTMLCollection 。注意兼容性为IE9+（含）。另外，不仅仅是document，其它元素也支持 getElementsByClassName 方法；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var elements = document.getElementsByClassName(names); // or:</span><br><span class="line">var elements = rootElement.getElementsByClassName(names);</span><br></pre></td></tr></table></figure></p>
+<p>elements 是一个实时集合，包含了找到的所有元素。<br>names 是一个字符串，表示要匹配的类名列表；类名通过空格分隔<br>getElementsByClassName 可以在任何元素上调用，不仅仅是 document。 调用这个方法的元素将作为本次查找的根元素.</p>
+<h3 id="3-document-getElementsByTagName-："><a href="#3-document-getElementsByTagName-：" class="headerlink" title="3. document.getElementsByTagName ："></a>3. document.getElementsByTagName ：</h3><p>根据标签查找元素， * 表示查询所有标签，返回一个 HTMLCollection 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var elements = document.getElementsByTagName(name);</span><br></pre></td></tr></table></figure></p>
+<p>elements 是一个由发现的元素出现在树中的顺序构成的动态的HTML集合 HTMLCollection 。<br>name 是一个代表元素的名称的字符串。特殊字符 “*” 代表了所有元素。<br><strong>注意：</strong>当在一个HTML 文件上执行时， getElementsByTagName() 会在执行前把参数转换为小写字母。这是试着在一个HTML文件的子树匹配驼峰命名法的 SVG 元素时不希望的。 document.getElementsByTagNameNS() 在那种情况下会有用. </p>
+<h3 id="4-document-getElementsByName-："><a href="#4-document-getElementsByName-：" class="headerlink" title="4. document.getElementsByName ："></a>4. document.getElementsByName ：</h3><p>根据元素的name属性查找，返回一个 NodeList 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elements = document.getElementsByName(name);</span><br></pre></td></tr></table></figure>
+<p>elements 是一个实时更新的 NodeList 集合。<br>name 是元素的 name 属性的值。<br><strong>注意：</strong></p>
+<ul>
+<li>getElementsByName  在不同的浏览器其中工作方式不同。在IE和Opera中， getElementsByName()  方法还会返回那些 id 为指定值的元素。所以你要小心使用该方法，最好不要为元素的 name 和 id 赋予相同的值。 </li>
+<li>IE 和 Edge 都返回一个 HTMLCollection, 而不是NodeList 。</li>
+</ul>
+<h3 id="5-document-querySelector-："><a href="#5-document-querySelector-：" class="headerlink" title="5. document.querySelector ："></a>5. document.querySelector ：</h3><p>返回单个Node，IE8+(含），如果匹配到多个结果，只返回第一个。如果找不到匹配项，则返回null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element = document.querySelector(selectors);</span><br></pre></td></tr></table></figure>
+<p>（1）参数</p>
+<ul>
+<li>selectors包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。<br><strong>提示:</strong>必须使用反斜杠字符转义不属于标准CSS语法的字符。 由于JavaScript也使用退格转义，因此在使用这些字符编写字符串文字时必须特别小心。<br>（2）返回值</li>
+<li>表示文档中与指定的一组CSS选择器匹配的第一个元素的 html元素Element对象。<br>（3）异常</li>
+<li>SYNTAX_ERR指定selectors的语法无效。</li>
+</ul>
+<h3 id="6-document-querySelectorAll-："><a href="#6-document-querySelectorAll-：" class="headerlink" title="6. document.querySelectorAll ："></a>6. document.querySelectorAll ：</h3><p>返回一个 NodeList ，IE8+(含）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elementList = parentNode.querySelectorAll(selectors);</span><br></pre></td></tr></table></figure>
+<p>（1）参数</p>
+<ul>
+<li>一个 DOMString 包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误。<br>（2）返回值</li>
+<li>一个静态 NodeList，包含一个与至少一个指定选择器匹配的元素的Element对象，或者在没有匹配的情况下为空NodeList。<br>（3）异常</li>
+<li>SyntaxError如果指定的 选择器 不合法，会抛出错误。如$(“##div”)</li>
+</ul>
+<h3 id="7-document-forms-："><a href="#7-document-forms-：" class="headerlink" title="7. document.forms ："></a>7. document.forms ：</h3><p>获取当前页面所有form，返回一个 HTMLCollection ；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let collection = document.forms;</span><br></pre></td></tr></table></figure>
+<h2 id="节点关系API"><a href="#节点关系API" class="headerlink" title="节点关系API"></a>节点关系API</h2><p>DOM中的节点相互之间存在着各种各样的关系，如父子关系，兄弟关系等。</p>
+<h3 id="父关系API"><a href="#父关系API" class="headerlink" title="父关系API"></a>父关系API</h3><ul>
+<li>parentNode：每个节点都有一个parentNode属性，它表示元素的父节点。Element的父节点可能是Element，Document或DocumentFragment。</li>
+<li>parentElement：返回元素的父元素节点，与parentNode的区别在于，其父节点必须是一个Element，如果不是，则返回null</li>
+</ul>
+<h3 id="子关系API"><a href="#子关系API" class="headerlink" title="子关系API"></a>子关系API</h3><ul>
+<li>childNodes：返回一个即时的NodeList，表示元素的子节点列表，子节点可能会包含文本节点，注释节点等。</li>
+<li>children：一个即时的HTMLCollection，子节点都是Element，IE9以下浏览器不支持。</li>
+<li>firstNode：第一个子节点</li>
+<li>lastNode：最后一个子节点</li>
+<li>hasChildNodes方法：可以用来判断是否包含子节点。</li>
+</ul>
+<h3 id="兄弟关系型API"><a href="#兄弟关系型API" class="headerlink" title="兄弟关系型API"></a>兄弟关系型API</h3><p>previousSibling：节点的前一个节点，如果该节点是第一个节点，则为null。注意有可能拿到的节点是文本节点或注释节点，与预期的不符，要进行处理一下。<br>previousElementSibling：返回前一个元素节点，前一个节点必须是Element，注意IE9以下浏览器不支持。</p>
+<p>nextSibling：节点的后一个节点，如果该节点是最后一个节点，则为null。注意有可能拿到的节点是文本节点，与预期的不符，要进行处理一下。<br>nextElementSibling：返回后一个元素节点，后一个节点必须是Element，注意IE9以下浏览器不支持。</p>
+<h2 id="元素属性型API"><a href="#元素属性型API" class="headerlink" title="元素属性型API"></a>元素属性型API</h2><h3 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute"></a>setAttribute</h3><p>设置指定元素上的一个属性值。如果属性已经存在，则更新该值; 否则将添加一个新的属性用指定的名称和值。要获取属性的当前值，使用 getAttribute(); 要删除一个属性，调用removeAttribute()。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.setAttribute(name, value);</span><br></pre></td></tr></table></figure></p>
+<p>name 是表示属性名称的字符串<br>value 是属性的新值</p>
+<h3 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute"></a>getAttribute</h3><p>getAttribute() 返回元素上一个指定的属性值。如果指定的属性不存在，则返回  null 或 “” （空字符串）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let attribute = element.getAttribute(attributeName);</span><br></pre></td></tr></table></figure></p>
+<p>attribute 是一个包含 attributeName 属性值的字符串。<br>attributeName 是你想要获取的属性值的属性名称。</p>
+<h2 id="元素样式API"><a href="#元素样式API" class="headerlink" title="元素样式API"></a>元素样式API</h2><h3 id="window-getComputedStyle"><a href="#window-getComputedStyle" class="headerlink" title="window.getComputedStyle"></a>window.getComputedStyle</h3><p>Window.getComputedStyle()方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有CSS属性的值。 私有的CSS属性值可以通过对象提供的API或通过简单地使用CSS属性名称进行索引来访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let style = window.getComputedStyle(element, [pseudoElt]);</span><br></pre></td></tr></table></figure></p>
+<p><strong>element</strong><br> 用于获取计算样式的Element。<br><strong>pseudoElt</strong> (可选)<br>指定一个要匹配的伪元素的字符串。必须对普通元素省略（或null）。</p>
+<p>返回的style是一个实时的 CSSStyleDeclaration 对象，当元素的样式更改时，它会自动更新本身。</p>
+<h3 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect"></a>getBoundingClientRect</h3><p>Element.getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rectObject = object.getBoundingClientRect();</span><br></pre></td></tr></table></figure></p>
+<p>返回值是一个 DOMRect 对象，这个对象是由该元素的 getClientRects() 方法返回的一组矩形的集合, 即：是与该元素相关的CSS 边框集合 。</p>
+<p>DOMRect 对象包含了一组用于描述边框的只读属性——left、top、right和bottom，单位为像素。除了 width 和 height 外的属性都是相对于视口的左上角位置而言的。<br><img src="https://i.loli.net/2019/01/19/5c42ced469f7d.png" alt="示意图"><br>空边框盒会被忽略。如果所有的元素边框都是空边框，那么这个矩形给该元素返回的 width、height 值为0，left、top值为第一个css盒子（按内容顺序）的top-left值。</p>
+<p>当计算边界矩形时，会考虑视口区域（或其他可滚动元素）内的滚动操作，也就是说，当滚动位置发生了改变，top和left属性值就会随之立即发生变化（因此，它们的值是相对于视口的，而不是绝对的）。如果你需要获得相对于整个网页左上角定位的属性值，那么只要给top、left属性值加上当前的滚动位置（通过window.scrollX和window.scrollY），这样就可以获取与当前的滚动位置无关的值。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr330u1k0000n4pmja5lnslv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr33tjut0001vgpmsj053nyk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +342,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjr330u340009n4pm02dpicwn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjr33tjwi0009vgpmdaab79ld" class="article-share-link">Share</a>
       
       
     </footer>
@@ -450,7 +398,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjr330u2c0004n4pmlxvvoiun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjr33tjv30004vgpm67xg0m4n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -577,7 +525,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjr330u210002n4pmk23wjfsn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjr33tjv00003vgpme6frru36" class="article-share-link">Share</a>
       
       
     </footer>
@@ -684,7 +632,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjr330u2a0003n4pm0fnjvl1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjr33tjui0000vgpmd9btey53" class="article-share-link">Share</a>
       
       
     </footer>
@@ -743,7 +691,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjr330u2e0005n4pm4z3gi7qf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjr33tjva0005vgpml1v5jxv8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -788,7 +736,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjr330u1x0001n4pmjg2ayqtz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjr33tjux0002vgpms2tgmtml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -899,7 +847,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjr330u2x0008n4pm6bomfrsz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjr33tjvj0008vgpmakcj0hxe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -971,7 +919,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjr330u3e000cn4pmxm66yeaa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjr33tjwl000avgpmlh6eqaox" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1013,7 +961,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjr330u37000an4pmqx2jgv8r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjr33tjws000cvgpm03iuirtm" class="article-share-link">Share</a>
       
       
     </footer>
