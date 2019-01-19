@@ -13,7 +13,7 @@
 <meta property="og:description" content="DOM简介 1.文档对象模型（Document Object Model，简称DOM）是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。Document Object Model的历史可以追溯至1990年代后期微软与Netscape的“浏览器大战”，双方为了在JavaScript与JScript一">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/01/19/5c42b1359999b.jpg">
-<meta property="og:updated_time" content="2019-01-19T06:11:04.294Z">
+<meta property="og:updated_time" content="2019-01-19T06:14:13.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM入门">
 <meta name="twitter:description" content="DOM简介 1.文档对象模型（Document Object Model，简称DOM）是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。Document Object Model的历史可以追溯至1990年代后期微软与Netscape的“浏览器大战”，双方为了在JavaScript与JScript一">
@@ -152,11 +152,11 @@ ga('send', 'pageview');
 <li><p>name 是一个代表元素的名称的字符串。特殊字符 “*” 代表了所有元素。<br><strong>注意：</strong>当在一个HTML 文件上执行时， getElementsByTagName() 会在执行前把参数转换为小写字母。这是试着在一个HTML文件的子树匹配驼峰命名法的 SVG 元素时不希望的。 document.getElementsByTagNameNS() 在那种情况下会有用. </p>
 </li>
 <li><ol start="4">
-<li>document.getElementsByName ：<br>根据元素的name属性查找，返回一个 NodeList 。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">elements = document.getElementsByName(name)</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">* elements 是一个实时更新的 NodeList 集合。</span><br><span class="line">* name 是元素的 name 属性的值。</span><br><span class="line">**注意：**</span><br><span class="line">* getElementsByName  在不同的浏览器其中工作方式不同。在IE和Opera中， getElementsByName()  方法还会返回那些 id 为指定值的元素。所以你要小心使用该方法，最好不要为元素的 name 和 id 赋予相同的值。 </span><br><span class="line">* IE 和 Edge 都返回一个 HTMLCollection, 而不是NodeList 。</span><br><span class="line"></span><br><span class="line">* 5. document.querySelector ：</span><br><span class="line">返回单个Node，IE8+(含），如果匹配到多个结果，只返回第一个。如果找不到匹配项，则返回null。</span><br></pre></td></tr></table></figure>
-</li>
+<li>document.getElementsByName ：<br>根据元素的name属性查找，返回一个 NodeList 。</li>
 </ol>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">elements = document.getElementsByName(name)</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">* elements 是一个实时更新的 NodeList 集合。</span><br><span class="line">* name 是元素的 name 属性的值。</span><br><span class="line">**注意：**</span><br><span class="line">* getElementsByName  在不同的浏览器其中工作方式不同。在IE和Opera中， getElementsByName()  方法还会返回那些 id 为指定值的元素。所以你要小心使用该方法，最好不要为元素的 name 和 id 赋予相同的值。 </span><br><span class="line">* IE 和 Edge 都返回一个 HTMLCollection, 而不是NodeList 。</span><br><span class="line"></span><br><span class="line">* 5. document.querySelector ：</span><br><span class="line">返回单个Node，IE8+(含），如果匹配到多个结果，只返回第一个。如果找不到匹配项，则返回null。</span><br></pre></td></tr></table></figure>
 <p>element = document.querySelector(selectors);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**参数**</span><br><span class="line">* selectors包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。</span><br><span class="line">**提示:**必须使用反斜杠字符转义不属于标准CSS语法的字符。 由于JavaScript也使用退格转义，因此在使用这些字符编写字符串文字时必须特别小心。</span><br><span class="line">**返回值**</span><br><span class="line">* 表示文档中与指定的一组CSS选择器匹配的第一个元素的 html元素Element对象。</span><br><span class="line">**异常**</span><br><span class="line">* SYNTAX_ERR指定selectors的语法无效。</span><br><span class="line"></span><br><span class="line">* 6. document.querySelectorAll ：</span><br><span class="line">返回一个 NodeList ，IE8+(含）。</span><br></pre></td></tr></table></figure></p>
 <p>elementList = parentNode.querySelectorAll(selectors);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**参数**</span><br><span class="line">* 一个 DOMString 包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误。</span><br><span class="line">**返回值**</span><br><span class="line">* 一个静态 NodeList，包含一个与至少一个指定选择器匹配的元素的Element对象，或者在没有匹配的情况下为空NodeList。</span><br><span class="line">**异常**</span><br><span class="line">* SyntaxError如果指定的 选择器 不合法，会抛出错误。如$(&quot;##div&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* 7. document.forms ：</span><br><span class="line">获取当前页面所有form，返回一个 HTMLCollection ；</span><br></pre></td></tr></table></figure></p>
 <p>let collection = document.forms;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Node类型</span><br><span class="line">Node是一个接口，许多DOM类型从这个接口继承，并允许类似地处理（或测试）这些各种类型。</span><br><span class="line">以下接口都从Node继承其方法和属性：</span><br><span class="line">Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference。</span><br><span class="line">在方法和属性不相关的特定情况下，这些接口可能返回null。它们可能会抛出异常 - 例如，当将子节点添加到不允许子节点存在的节点时。</span><br><span class="line"></span><br><span class="line">### 属性</span><br><span class="line">从其父类EventTarget继承属性。</span><br><span class="line">* 1. Node.childNodes（只读）</span><br><span class="line">返回一个包含了该节点所有子节点的实时的NodeList。NodeList 是“实时的”意思是，如果该节点的子节点发生了变化，NodeList对象就会自动更新。</span><br><span class="line">* 2. Node.firstChild （只读）</span><br><span class="line">返回该节点的第一个子节点Node，如果该节点没有子节点则返回null。</span><br><span class="line">* 3. Node.isConnected（只读）</span><br><span class="line">返回一个布尔值用来检测该节点是否已连接(直接或者间接)到一个上下文对象上，比如通常DOM情况下的Document对象，或者在shadow DOM情况下的ShadowRoot对象。</span><br><span class="line">* 4. Node.lastChild （只读）</span><br><span class="line">返回该节点的最后一个子节点Node，如果该节点没有子节点则返回null。</span><br><span class="line">* 5. Node.nextSibling （只读）</span><br><span class="line">返回与该节点同级的下一个节点 Node，如果没有返回null。</span><br><span class="line">* 6. Node.nodeName （只读）</span><br><span class="line">返回一个包含该节点名字的DOMString。节点的名字的结构和节点类型不同。比如HTMLElement的名字跟它所关联的标签对应，就比如HTMLAudioElement的就是 &apos;audio&apos; ，Text节点对应的是 &apos;#text&apos; 还有Document节点对应的是 &apos;#document&apos;。</span><br><span class="line">* 7. Node.nodeType（只读）</span><br><span class="line">返回一个与该节点类型对应的无符号短整型的值，后面作为重点详细介绍。</span><br><span class="line">* 8. Node.parentNode （只读）</span><br><span class="line">返回一个当前结点 Node的父节点 。如果没有这样的结点,，比如说像这个节点是树结构的顶端或者没有插入一棵树中， 这个属性返回null。</span><br><span class="line">* 9. Node.parentElement （只读）</span><br><span class="line">返回一个当前节点的父节点 Element 。 如果当前节点没有父节点或者说父节点不是一个元素(Element), 这个属性返回null。</span><br><span class="line">* 10. Node.previousSibling （只读）</span><br><span class="line">返回一个当前节点同辈的前一个结点( Node) ，或者返回null（如果不存在这样的一个节点的话）。</span><br><span class="line"></span><br><span class="line">### nodeType</span><br><span class="line">nodeType 属性可用来区分不同类型的节点，比如 元素, 文本 和 注释。</span><br></pre></td></tr></table></figure></p>
@@ -173,7 +173,7 @@ ga('send', 'pageview');
 <tr>
 <td style="text-align:left">Node.ELEMENT_NODE</td>
 <td style="text-align:center">1</td>
-<td style="text-align:left">一个 元素 节点，例如 <p> 和 <div>。</div></p></td>
+<td style="text-align:left">一个 元素 节点，例如 <code>&lt;p&gt;</code> 和 <code>&lt;div&gt;</code>。</td>
 </tr>
 <tr>
 <td style="text-align:left">Node.TEXT_NODE</td>
@@ -183,7 +183,7 @@ ga('send', 'pageview');
 <tr>
 <td style="text-align:left">Node.PROCESSING_INSTRUCTION_NODE</td>
 <td style="text-align:center">7</td>
-<td style="text-align:left">一个用于XML文档的 ProcessingInstruction ，例如 &lt;?xml-stylesheet … ?&gt; 声明。</td>
+<td style="text-align:left">一个用于XML文档的 ProcessingInstruction ，例如 <code>&lt;?xml-stylesheet ... ?&gt;</code> 声明。</td>
 </tr>
 <tr>
 <td style="text-align:left">Node.COMMENT_NODE</td>
@@ -198,7 +198,7 @@ ga('send', 'pageview');
 <tr>
 <td style="text-align:left">Node.DOCUMENT_TYPE_NODE</td>
 <td style="text-align:center">10</td>
-<td style="text-align:left">描述文档类型的 DocumentType 节点。例如 &lt;!DOCTYPE html&gt;  就是用于 HTML5 的。</td>
+<td style="text-align:left">描述文档类型的 DocumentType 节点。例如 <code>&lt;!DOCTYPE html&gt;</code> 就是用于 HTML5 的。</td>
 </tr>
 <tr>
 <td style="text-align:left">Node.DOCUMENT_FRAGMENT_NODE</td>
@@ -211,7 +211,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr32mnjb0001pspmcoyk0gzi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr32rte5000130pm0w45o3w4" class="article-share-link">Share</a>
       
       
     </footer>
