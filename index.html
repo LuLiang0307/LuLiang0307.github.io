@@ -119,11 +119,11 @@ ga('send', 'pageview');
 <p>DOM的缺点主要表现在：效率低，解析速度慢，内存占用量过高，对于大文件来说几乎不可能使用。另外效率低还表现在大量的消耗时间，因为使用DOM进行解析时，将为文档的每个element、attribute、processing-instruction和comment都创建一个对象，这样在DOM机制中所运用的大量对象的创建和销毁无疑会影响其效率。</p>
 <h2 id="节点查找"><a href="#节点查找" class="headerlink" title="节点查找"></a>节点查找</h2><ul>
 <li><ol>
-<li>document.getElementById ：<br><strong>参数</strong></li>
+<li>document.getElementById ：<br>（1）参数</li>
 </ol>
 </li>
 <li>根据ID查找元素，大小写敏感，如果有多个结果，只返回第一个；</li>
-<li>element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.<br><strong>返回值</strong></li>
+<li>element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.<br>（1）返回值</li>
 <li>返回一个匹配到 ID 的 DOM Element 对象。若在当前 Document 下没有找到，则返回 null。</li>
 </ul>
 <p>由于元素的 ID 在大部分情况下要求是独一无二的，这个方法自然而然地成为了一个高效查找特定元素的方法。不同于其他 Element 查找方法（如Document.querySelector() 以及 Document.querySelectorAll()），getElementById() 只有在作为 document 的方法时才能起作用，而在DOM中的其他元素下无法生效。这是因为 ID 值在整个网页中必须保持唯一。因此没有必要为这个方法创建所谓的 “局部” 版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var element = document.getElementById(id);</span><br></pre></td></tr></table></figure></p>
@@ -165,10 +165,10 @@ ga('send', 'pageview');
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element = document.querySelector(selectors);</span><br></pre></td></tr></table></figure>
-<p><strong>参数</strong></p>
+<p>（1）参数</p>
 <ul>
-<li>selectors包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。<br><strong>提示:</strong>必须使用反斜杠字符转义不属于标准CSS语法的字符。 由于JavaScript也使用退格转义，因此在使用这些字符编写字符串文字时必须特别小心。<br><strong>返回值</strong></li>
-<li>表示文档中与指定的一组CSS选择器匹配的第一个元素的 html元素Element对象。<br><strong>异常</strong></li>
+<li>selectors包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。<br><strong>提示:</strong>必须使用反斜杠字符转义不属于标准CSS语法的字符。 由于JavaScript也使用退格转义，因此在使用这些字符编写字符串文字时必须特别小心。<br>（2）返回值</li>
+<li>表示文档中与指定的一组CSS选择器匹配的第一个元素的 html元素Element对象。<br>（3）异常</li>
 <li><p>SYNTAX_ERR指定selectors的语法无效。</p>
 </li>
 <li><ol start="6">
@@ -177,10 +177,10 @@ ga('send', 'pageview');
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elementList = parentNode.querySelectorAll(selectors);</span><br></pre></td></tr></table></figure>
-<p><strong>参数</strong></p>
+<p>（1）参数</p>
 <ul>
-<li>一个 DOMString 包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误。<br><strong>返回值</strong></li>
-<li>一个静态 NodeList，包含一个与至少一个指定选择器匹配的元素的Element对象，或者在没有匹配的情况下为空NodeList。<br><strong>异常</strong></li>
+<li>一个 DOMString 包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误。<br>（2）返回值</li>
+<li>一个静态 NodeList，包含一个与至少一个指定选择器匹配的元素的Element对象，或者在没有匹配的情况下为空NodeList。<br>（3）异常</li>
 <li>SyntaxError如果指定的 选择器 不合法，会抛出错误。如$(“##div”)</li>
 </ul>
 <ul>
@@ -282,11 +282,41 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
-
+<h2 id="节点创建API"><a href="#节点创建API" class="headerlink" title="节点创建API"></a>节点创建API</h2><p>节点创建API主要包括 createElement 、 createTextNode 、 cloneNode 和 createDocumentFragment 四个方法。</p>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let element = document.createElement(tagName[, options]);</span><br></pre></td></tr></table></figure>
+<p>（1）参数</p>
+<ul>
+<li>tagName<br>指定要创建元素类型的字符串,创建元素时的nodeName使用tagName的值为初始化,该方法不接受使用限定名称(如:”html:a”),在HTML文档上调用createElement()方法创建元素之前会将tagName转化成小写,在Firefox, Opera 和 Chrome内核中. createElement(null) 等同于 createElement(“null”)</li>
+<li>options(可选)<br>一个可选的参数 ElementCreationOptions 是包含一个属性名为 is的对象, 该对象的值是用 customElements.define()方法定义过的一个自定义元素的标签名。 为了向前兼容较老版本的 Custom Elements specification, 有一些浏览器会允许你传一个值为自定义元素的标签名的字符串作为该参数的值. 可以看 Extending native HTML elements 仔细了解如何使用该参数。<br>这个新元素会有一个 is 属性，该属性值为自定义元素的标签名。注意，自定义元素是一项只在某些浏览器可用的实验性特性。</li>
+</ul>
+<p>（2）返回值<br>The new Element.</p>
+<ul>
+<li>element 是创建的Element对象。</li>
+<li>tagName 指定将要创建的元素类型的字符串。创建的element的nodeName会被初始化为tagName的值。该方法不接受带条件的元素名字(例如: html:a)。</li>
+<li>options 是一个可选的 ElementCreationOptions 对象. 如果这个对象被定义并赋予了一个 is 特性，则创建的element的 is 属性会被初始化为这个特性的值. 如果这个对象没有 is 特性，则值为空.</li>
+</ul>
+<h3 id="createTextNode"><a href="#createTextNode" class="headerlink" title="createTextNode"></a>createTextNode</h3><p>创建一个新的文本节点.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var text = document.createTextNode(data);</span><br></pre></td></tr></table></figure></p>
+<p>(1)参数</p>
+<ul>
+<li>text 是一个文本节点.</li>
+<li>data 是一个字符串,包含了放在文本节点中的内容.</li>
+</ul>
+<p>###　cloneNode<br>Node.cloneNode() 方法返回调用该方法的节点的一个副本.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dupNode = node.cloneNode(deep);</span><br></pre></td></tr></table></figure></p>
+<p><strong>node</strong><br>将要被克隆的节点<br><strong>dupNode</strong><br>克隆生成的副本节点<br><strong>deep</strong> (可选)<br>是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.</p>
+<h3 id="createDocumentFragment"><a href="#createDocumentFragment" class="headerlink" title="createDocumentFragment"></a>createDocumentFragment</h3><p>创建一个新的空白的文档片段( DocumentFragment)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let fragment = document.createDocumentFragment();</span><br></pre></td></tr></table></figure></p>
+<p>fragment 是一个指向空DocumentFragment对象的引用。</p>
+<h2 id="页面修改型API"><a href="#页面修改型API" class="headerlink" title="页面修改型API"></a>页面修改型API</h2><p>修改页面内容的api主要包括：appendChild，insertBefore，removeChild，replaceChild。</p>
+<h3 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild"></a>appendChild</h3><p>Node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var child = node.appendChild(child);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>node 是要插入子节点的父节点.</li>
+<li>child 即是参数又是这个方法的返回值.</li>
+</ul>
+<h3 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore"></a>insertBefore</h3><p>###　removeChild</p>
+<h3 id="replaceChild"><a href="#replaceChild" class="headerlink" title="replaceChild"></a>replaceChild</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr32w9950000uwpmc48ujisj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/DOM入门/" data-id="cjr330u1k0000n4pmja5lnslv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +394,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjr32w9ai0009uwpm29bubmmk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/22/原型与原型链/" data-id="cjr330u340009n4pm02dpicwn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -420,7 +450,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjr32w9a00004uwpmodpbwzua" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/20/JS里的数据类型转换及一些面试题的坑/" data-id="cjr330u2c0004n4pmlxvvoiun" class="article-share-link">Share</a>
       
       
     </footer>
@@ -547,7 +577,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjr32w99x0003uwpm3fframm5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/JS里的数据类型/" data-id="cjr330u210002n4pmk23wjfsn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -654,7 +684,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjr32w99k0001uwpm1xah17ln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/CSS的一般布局的实现/" data-id="cjr330u2a0003n4pm0fnjvl1b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -713,7 +743,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjr32w9a20005uwpmtwgt27q0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/09/css/" data-id="cjr330u2e0005n4pm4z3gi7qf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -758,7 +788,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjr32w99v0002uwpmuxk5k0rb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/22/HTML常用标签注意的地方/" data-id="cjr330u1x0001n4pmjg2ayqtz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -869,7 +899,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjr32w9ag0008uwpmwuq6uv1l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/关于html的知识介绍/" data-id="cjr330u2x0008n4pm6bomfrsz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -941,7 +971,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjr32w9ay000cuwpm28o06fku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjr330u3e000cn4pmxm66yeaa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -983,7 +1013,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjr32w9at000auwpmqn4vovxl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjr330u37000an4pmqx2jgv8r" class="article-share-link">Share</a>
       
       
     </footer>
