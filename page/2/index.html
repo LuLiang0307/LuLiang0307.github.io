@@ -78,6 +78,78 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-请求与响应" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/请求与响应/" class="article-date">
+  <time datetime="2018-10-16T13:05:44.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/请求与响应/">请求与响应</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>博客内容：</strong></p>
+<ol>
+<li>1.HTTP 请求包括哪些部分，如何用Chrome开发者工具查看 HTTP 请求内容</li>
+<li>2.HTTP 响应包括哪些部分，如何用Chrome开发者工具查看 HTTP 响应内容</li>
+<li>3.如何使用 curl 命令</li>
+</ol>
+<h2 id="1-HTTP-请求包括哪些部分，如何用Chrome开发者工具查看-HTTP-请求内容"><a href="#1-HTTP-请求包括哪些部分，如何用Chrome开发者工具查看-HTTP-请求内容" class="headerlink" title="1.HTTP 请求包括哪些部分，如何用Chrome开发者工具查看 HTTP 请求内容"></a>1.HTTP 请求包括哪些部分，如何用Chrome开发者工具查看 HTTP 请求内容</h2><p>1）请求为：$ curl -s -v -H “name:xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>   请求的内容为：<img src="https://i.loli.net/2018/10/16/5bc5e45818df3.jpg" alt=""><br>2）请求为：$ curl -X POST -s -v -H “name: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>   请求的内容为：<img src="https://i.loli.net/2018/10/16/5bc5e4f582ece.jpg" alt=""><br>3）请求为：$ curl -X POST -d “1234567890” -s -v -H “name: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>   请求的内容为：<img src="https://i.loli.net/2018/10/16/5bc5e5a1f3e2d.jpg" alt=""><br><strong>总结：请求包括四个内容：</strong><br><strong>1 动词 路径 协议/版本</strong><br><strong>2 Key1: value1</strong><br><strong>2 Key2: value2</strong><br><strong>2 Key3: value3</strong><br><strong>3 &lt;回车&gt;</strong><br><strong>4 要上传的数据</strong><br>注意：<br>1.请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）<br>2.第三部分永远都是一个回车（\n）<br>3.动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等<br>4.这里的路径包括「查询参数」，但不包括「锚点」<br>5.如果你没有写路径，那么路径默认为 /<br>6.第 2 部分中的 Content-Type 标注了第 4 部分的格式</p>
+<h2 id="如何用Chrome开发者工具查看-HTTP-请求内容？"><a href="#如何用Chrome开发者工具查看-HTTP-请求内容？" class="headerlink" title="如何用Chrome开发者工具查看 HTTP 请求内容？"></a>如何用Chrome开发者工具查看 HTTP 请求内容？</h2><ol>
+<li>1.打开 Network</li>
+<li>2.地址栏输入网址<br><img src="https://i.loli.net/2018/10/16/5bc5e75b5df1c.jpg" alt=""></li>
+<li>3.在 Network 点击，查看 request，点击「view source」</li>
+<li>4.点击「view source」<br><img src="https://i.loli.net/2018/10/16/5bc5e7ff90b62.jpg" alt=""></li>
+<li>5.如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到。</li>
+</ol>
+<h2 id="2-HTTP-响应包括哪些部分，如何用Chrome开发者工具查看-HTTP-响应内容"><a href="#2-HTTP-响应包括哪些部分，如何用Chrome开发者工具查看-HTTP-响应内容" class="headerlink" title="2.HTTP 响应包括哪些部分，如何用Chrome开发者工具查看 HTTP 响应内容"></a>2.HTTP 响应包括哪些部分，如何用Chrome开发者工具查看 HTTP 响应内容</h2><p>1.POST请求的响应<br><img src="https://i.loli.net/2018/10/17/5bc6ac3098348.jpg" alt=""><br><img src="https://i.loli.net/2018/10/17/5bc6ac6e211fc.jpg" alt=""><br>2.GET请求的响应<br><img src="https://i.loli.net/2018/10/17/5bc6acfe50c65.jpg" alt=""><br><img src="https://i.loli.net/2018/10/17/5bc6ad4f8116c.jpg" alt=""></p>
+<p><strong>总结：响应包括四个内容：</strong><br><strong>1 协议/版本号 状态码 状态解释</strong><br><strong>2 Key1: value1</strong><br><strong>2 Key2: value2</strong><br><strong>2 Key3: value3</strong><br><strong>3 &lt;回车&gt;</strong><br><strong>4 要下载的内容</strong><br>注意：<br>1.状态码要背，是服务器对浏览器说的话<br>参考链接：<a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81" target="_blank" rel="noopener"></a></p>
+<pre><code>* 1xx 不常用
+* 2xx 表示成功
+* 3xx 表示滚吧
+* 4xx 表示你丫错了
+* 5xx 表示好吧，我错了
+</code></pre><p>2.状态解释没什么用<br>3.第 2 部分中的 Content-Type 标注了第 4 部分的格式<br>4.第 2 部分中的 Content-Type 遵循 MIME 规范</p>
+<h2 id="如何用Chrome开发者工具查看-HTTP-响应内容"><a href="#如何用Chrome开发者工具查看-HTTP-响应内容" class="headerlink" title="如何用Chrome开发者工具查看 HTTP 响应内容"></a>如何用Chrome开发者工具查看 HTTP 响应内容</h2><ol>
+<li>1.打开 Network</li>
+<li>2.输入网址<br><img src="https://i.loli.net/2018/10/17/5bc6b3902b867.jpg" alt=""></li>
+<li>3.选中第一个响应<br><img src="https://i.loli.net/2018/10/17/5bc6b3fe370bb.jpg" alt=""></li>
+<li>4.查看 Response Headers，点击「view source」<br><img src="https://i.loli.net/2018/10/17/5bc6b46bb11f1.jpg" alt=""></li>
+<li>5.你会看到响应的前两部分</li>
+<li>6.查看 Response 或者 Preview，你会看到响应的第 4 部分</li>
+</ol>
+<h2 id="3-如何使用-curl-命令"><a href="#3-如何使用-curl-命令" class="headerlink" title="3.如何使用 curl 命令"></a>3.如何使用 curl 命令</h2><p>先简单介绍三个curl的使用示例：<br>1)curl -s -v -H “name: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>1.curl：转让一个URL<br>2.-s：silent的缩写，安静的；沉默的意思，不要显示进度表或错误消息。使卷曲沉默。<br>3.-v：verbose的缩写，冗长的；啰嗦的意思 ，主要用于调试，从“&gt;”开始的一行是由curl发送的“头数据”，“&lt;”的意思是“头数据”，它是在正常情况下被隐藏的，而一行“则是由curl提供的附加信息”。<br>4.-H：header的缩写，头部的意思。（HTTP）在获取web页面时使用额外的头。您可以指定任意数量的额外头。请注意，如果您应该添加一个与curl将使用的内部curl同名的自定义标头，那么您的外部设置头将会被使用，而不是内部的头。<br>5.”name: xxx”：可以随意设置，也可以不设置，只是想证明执行成功。</p>
+<ol start="6">
+<li>“<a href="https://www.baidu.com&quot;：请求的网址，用双引号引起来。" target="_blank" rel="noopener">https://www.baidu.com&quot;：请求的网址，用双引号引起来。</a></li>
+</ol>
+<p>2）curl -X POST -s -v -H “name: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>1.-x POST:请求命令，（HTTP）指定在与HTTP服务器通信时使用的自定义请求方法。指定的请求将被使用，而不是使用其他方法（默认情况下会得到）。（FTP）指定一个自定义FTP命令，而不是在使用FTP执行文件列表时使用LIST。</p>
+<p>3）curl -X POST -d “1234567890” -s -v -H “name: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a><br>1.-d “1234567890”:（HTTP）在POST请求中向HTTP服务器发送指定的数据，就像浏览器在用户填写HTML表单并按下提交按钮时所做的那样。这会让curl通过content-type application/x-www-form-urlencoded的形式将数据传输给服务器。<br>其他的用法可以参考：<br><a href="https://www.thegeekstuff.com/2012/04/curl-examples/" target="_blank" rel="noopener"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/16/请求与响应/" data-id="cjshmjc6n000eq8pmv1girfoa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-命令行介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/09/命令行介绍/" class="article-date">
@@ -110,7 +182,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjr999bb6000bs4pmk0kazwrq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/命令行介绍/" data-id="cjshmjc65000cq8pmwsbpwmwx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +221,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjr999bak0005s4pmgjnhr2lk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/git入门/" data-id="cjshmjc5h0004q8pmgt2aadb9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +258,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/第二篇博客/" data-id="cjr999bb10009s4pmhiiypz8j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/第二篇博客/" data-id="cjshmjc60000bq8pm8ebiya2s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/hello-world/" data-id="cjr999bb00008s4pmrjn9cl33" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/hello-world/" data-id="cjshmjc67000dq8pmdhqhlcgl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +332,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -270,6 +342,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/23/封装AJAX/">封装AJAX</a>
+          </li>
         
           <li>
             <a href="/2019/01/23/jQuery的API实现，比如addClass和setText/">jQuery的API实现，比如addClass和setText</a>
@@ -285,10 +361,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/12/20/JS里的数据类型转换及一些面试题的坑/">JS里的数据类型转换及一些面试题的坑</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/JS里的数据类型/">JS里的数据类型</a>
           </li>
         
       </ul>
